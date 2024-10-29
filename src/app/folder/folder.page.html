@@ -5,6 +5,10 @@
     </ion-buttons>
     <ion-title>{{ folder }}</ion-title>
   </ion-toolbar>
+
+<div id="search">
+<ion-searchbar placeholder="Cari..."></ion-searchbar>
+</div>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -14,8 +18,55 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+   <div id="container">
+    <ng-container *ngIf="isInboxPage; else defaultContent">
+      <ion-list>
+        <!-- Casting $event to $any is a temporary fix for this bug https://github.com/ionic-team/ionic-framework/issues/24245 -->
+        <ion-reorder-group [disabled]="isDisabled" (ionItemReorder)="handleReorder($any($event))">
+          <ion-item>
+            <ion-label> Sesa Ajeng Maesara (H1D022027) </ion-label>
+            <ion-reorder slot="end"></ion-reorder>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label> Item 2 </ion-label>
+            <ion-reorder slot="end"></ion-reorder>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label> Item 3 </ion-label>
+            <ion-reorder slot="end"></ion-reorder>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label> Item 4 </ion-label>
+            <ion-reorder slot="end"></ion-reorder>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label> Item 5 </ion-label>
+            <ion-reorder slot="end"></ion-reorder>
+          </ion-item>
+        </ion-reorder-group>
+      </ion-list>
+    </ng-container>
+    
+    <ng-template #defaultContent>
+      <strong class="capitalize">{{ folder }}</strong>
+      <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI
+          Components</a></p>
+      <div id="card">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            Here's a small text description for the card content. Nothing more, nothing less.
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ng-template>
   </div>
 </ion-content>
