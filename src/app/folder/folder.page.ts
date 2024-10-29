@@ -21,14 +21,11 @@ export class FolderPage implements OnInit {
   }
 
   handleReorder(ev: CustomEvent<ItemReorderEventDetail>) {
-    // Logika untuk mengatur ulang item
     console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
-
-    // Selesaikan pengurutan
     ev.detail.complete();
   }
 
   toggleReorder() {
-    this.isDisabled = !this.isDisabled; // Mengubah status reorder
+    this.isDisabled = !this.isDisabled; 
   }
 }
